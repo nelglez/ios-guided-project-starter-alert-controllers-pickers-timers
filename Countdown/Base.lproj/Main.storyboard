@@ -21,7 +21,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WG9-UH-WrY">
                                 <rect key="frame" x="16" y="386.5" width="382" height="455.5"/>
                                 <subviews>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVR-re-VMR">
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVR-re-VMR" customClass="CountdownPicker" customModule="Countdown" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="216"/>
                                     </pickerView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tZc-3s-KRQ">
@@ -68,6 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="countdownPicker" destination="FVR-re-VMR" id="X8P-Ju-IKR"/>
                         <outlet property="resetButton" destination="89b-qm-nPx" id="kqN-hR-gPG"/>
                         <outlet property="startButton" destination="mIe-Ul-qXv" id="Suo-w7-CMi"/>
                         <outlet property="timeLabel" destination="tZc-3s-KRQ" id="qaV-sP-gJM"/>

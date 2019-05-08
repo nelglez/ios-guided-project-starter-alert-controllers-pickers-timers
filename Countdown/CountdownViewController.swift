@@ -13,6 +13,7 @@ class CountdownViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var countdownPicker: CountdownPicker!
     
     
     let countdown = Countdown()
@@ -38,6 +39,15 @@ class CountdownViewController: UIViewController {
 //        timeLabel.text = "\(countdown.timeRemaining)"
          timeLabel.text = string(from: countdown.timeRemaining)
         
+        switch countdown.state {
+        case .reset:
+            timeLabel.text = string(from: countdown.duration)
+        case .started:
+            timeLabel.text = string(from: countdown.timeRemaining)
+        case .finished:
+            timeLabel.text = string(from: 0)
+        }
+        
     }
 
     //5.019769 ... => 00:00:05.02
@@ -46,15 +56,23 @@ class CountdownViewController: UIViewController {
         return dateFormatter.string(from: date)
     }
     
+    func showAlert() {
+        let alert = UIAlertController(title: "Timer Finished", message: "Your countdown has finished.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
    
 
     @IBAction func startButtonPressed(_ sender: UIButton) {
+        countdown.duration = countdownPicker.duration
         countdown.start()
     }
     
     @IBAction func resetButtonPressed(_ sender: UIButton) {
-        
+        countdown.duration = countdownPicker.duration
         countdown.reset()
+        updateViews()
     }
     
 }
@@ -65,9 +83,6 @@ extension CountdownViewController: CountdownDelegate {
     }
     
     func countdownDidFinish() {
-      
+      showAlert()
     }
-    
-    
 }
-
