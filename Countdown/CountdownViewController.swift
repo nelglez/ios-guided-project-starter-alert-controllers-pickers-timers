@@ -9,6 +9,12 @@
 import UIKit
 
 class CountdownViewController: UIViewController {
+    
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,5 +22,11 @@ class CountdownViewController: UIViewController {
     }
 
 
+    @IBAction func startButtonPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func resetButtonPressed(_ sender: UIButton) {
+    }
+    
 }
 
